@@ -98,12 +98,12 @@ Appngage SDK source for Android Studio can be downloaded from [Here](https://das
 
 ######mAppngage.getInstance()
 ######mAppngage = NgageManager.getInstance(this);
-#######mAppngage.requestGcmRegistrationId(this);
-#######mAppngage.setOnline();
+######mAppngage.requestGcmRegistrationId(this);
+######mAppngage.setOnline();
 ######in onCreate() method of your application Main Activity class.
    
 2)  For further customization, call any of these methods.
-#######setUserId(String userId);
+######setUserId(String userId);
 // If you would like to pass your App's user ID as a unique identifier. If not called, a screen will be prompted asking User's name.
 ######setHeaderColor(int color);
 //Theme color according to your app.
