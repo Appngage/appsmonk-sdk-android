@@ -61,8 +61,8 @@ That's it; you should now see your Authorization key that you need to provide to
 
 ![Alt text](https://github.com/Espertosys-Labs-Pvt-Ltd/Appngage/blob/master/images/step6.jpg?raw=true "Optional Title")
 
-###STEP 5 :
-Setting up your application
+
+###Setting up your application
 
 At this point you should have:
 
@@ -72,8 +72,7 @@ You will need to input the GCM Sender ID below in the config file of Appngege. T
 but needs to be placed within your app's settings page on the Appngage dashboard.
 
 
-###STEP 6 :
-Configure your AndroidManifest.xml
+###Configure your AndroidManifest.xml
 
 Add the following lines to your AndroidManifest.xml within the <manifest...>
 
@@ -96,8 +95,7 @@ Add the following lines to your AndroidManifest.xml within the <manifest...>
 Appngage SDK source for Android Studio can be downloaded from [Here](https://dashboard.appngage.com/documentation), this includes test App.
 
 
-###STEP 6 :
-Initializing the Appngage SDK
+###Initializing the Appngage SDK
 
 1)  Initialize the Appngage SDK by calling 
 mAppngage.getInstance()
@@ -110,6 +108,7 @@ mAppngage.getInstance()
 setUserId(String userId); // If you would like to pass your App's user ID as a unique identifier. If not called, a screen will be prompted asking User's name.
 setHeaderColor(int color); //Theme color according to your app.
 setDarkTitle(Boolean isDark);// If theme color is on the lighter side.
+
 Alright!
 We're set to take Off.
 
