@@ -50,17 +50,18 @@ Getting your Authorization key
 
    1 . Go to Credentials and click Create new Key:
 
+   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step5.png?raw=true "Optional Title")
+   
    ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step6.png?raw=true "Optional Title")
 
    2 .Select Server key, and click Create:
 
    ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step7.png?raw=true "Optional Title")
    
-   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step8.png?raw=true "Optional Title")
 
 That's it; you should now see your Authorization key that you need to provide to Appngage:
 
-![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step9.png?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step8.png?raw=true "Optional Title")
 
 
 ###Setting up your application
