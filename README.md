@@ -27,19 +27,21 @@ Go to the Google Developers Console: https://console.developers.google.com/proje
 
 Create a new project
 
-![Alt text](https://github.com/Espertosys-Labs-Pvt-Ltd/Appngage/blob/master/images/step1.jpg?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step1.png?raw=true "Optional Title")
 
 ###STEP 2 :
 Getting your GCM Sender ID
 
-![Alt text](https://github.com/Espertosys-Labs-Pvt-Ltd/Appngage/blob/master/images/step2.jpg?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step2.png?raw=true "Optional Title")
 
 ###STEP 3 :
 Activating GCM API
 
 Go to the API & Auth menu and select APIs. Then look for the Google Cloud Messaging for Android line and click on the OFF button to activate it:
 
-![Alt text](https://github.com/Espertosys-Labs-Pvt-Ltd/Appngage/blob/master/images/step3.jpg?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step3.png?raw=true "Optional Title")
+
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step4.png?raw=true "Optional Title")
 
 Go to your newly created project and get your Project Number at the top of the page
 
@@ -48,15 +50,17 @@ Getting your Authorization key
 
    1 . Go to Credentials and click Create new Key:
 
-   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/images/step4.jpg?raw=true "Optional Title")
+   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step6.png?raw=true "Optional Title")
 
    2 .Select Server key, and click Create:
 
-   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/images/step5.jpg?raw=true "Optional Title")
+   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step7.png?raw=true "Optional Title")
+   
+   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step8.png?raw=true "Optional Title")
 
 That's it; you should now see your Authorization key that you need to provide to Appngage:
 
-![Alt text](https://github.com/Espertosys-Labs-Pvt-Ltd/Appngage/blob/master/images/step6.jpg?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step9.png?raw=true "Optional Title")
 
 
 ###Setting up your application
