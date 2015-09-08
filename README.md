@@ -68,8 +68,8 @@ That's it; you should now see your Authorization key that you need to provide to
 
 At this point you should have:
 
-Your GCM Sender ID (e.g. 187119303295)
-Your Google Authorization Key (e.g. AIzaSyABaO6Pjb_4XHhYfMqSNVKlw41GCC3d6pw)
+Your GCM Sender ID (e.g. 458299266933)
+Your Google Authorization Key (e.g. AIzaSyBVu_T1V6q1l3JAXqx3fmCgwPslRHThx3g)
 You will need to input the GCM Sender ID below in the config file of Appngege. The Google authorization key is not used in code, 
 but needs to be placed within your app's settings page on the Appngage dashboard.
 
@@ -92,11 +92,12 @@ Make sure you are connected to network during the integration.
 </pre>
 
 1)  Add the following line in dependencies in the App build.gradle file:
-   > compile 'com.appngage:gcm:0.0.1'
-   
+   ```
+   compile 'com.appngage:gcm:0.0.1'
+   ```
 2)  Configure your AndroidManifest.xml
 
-  a) Add the following lines in Manifest.xml file
+  a) Add the following lines in AndroidManifest.xml file
 ```xml
     <uses-permission android:name="android.permission.INTERNET" /> //(Ignore if already included in your App)
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> //(Ignore if already included in your App)
