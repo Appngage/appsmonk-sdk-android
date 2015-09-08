@@ -94,35 +94,35 @@ Make sure you are connected to network during the integration.
 1)  Add the following line in dependencies in the App build.gradle file:
    > compile 'com.appngage:gcm:0.0.1'
    
-###Configure your AndroidManifest.xml
+2)  Configure your AndroidManifest.xml
 
-   a) Add the following lines in Manifest.xml file
-   ```xml
-       <uses-permission android:name="android.permission.INTERNET" /> //(Ignore if already included in your App)
-       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> //(Ignore if already included in your App)
-       <permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />  //(Ignore if
-       already included in your App)
-       <uses-permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" />  //(Ignore if already included in your App)
-   ```
-   b) Add the following lines at the end under application tag in AndroidManifest.xml file. 
-   ```xml
-       <meta-data
-       android:name="appngage_id"
-       android:value="@string/appngage_id"></meta-data>
-       
-       <meta-data
-       android:name="gcm_sender_id"
-       android:value="@string/gcm_sender_id"></meta-data>
-   
-       <meta-data
-       android:name="gcm_launching_activity"
-       android:value="YOUR.PACKAGE.YOUR_LAUNCHING_ACTIVITY"></meta-data>
-   ```
+         a) Add the following lines in Manifest.xml file
+```xml
+             <uses-permission android:name="android.permission.INTERNET" /> //(Ignore if already included in your App)
+             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> //(Ignore if already included in your App)
+             <permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />  //(Ignore if
+             already included in your App)
+             <uses-permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" />  //(Ignore if already included in your App)
+```
+         b) Add the following lines at the end under application tag in AndroidManifest.xml file. 
+```xml
+             <meta-data
+             android:name="appngage_id"
+             android:value="@string/appngage_id"></meta-data>
+             
+             <meta-data
+             android:name="gcm_sender_id"
+             android:value="@string/gcm_sender_id"></meta-data>
+         
+             <meta-data
+             android:name="gcm_launching_activity"
+             android:value="YOUR.PACKAGE.YOUR_LAUNCHING_ACTIVITY"></meta-data>
+```
    <pre>
    Be sure to replace <b>YOUR_LAUNCHING_ACTIVITY</b> with your actual <b>LAUNCHING ACTIVITY</b>
    </pre>
    
-2) Add the following lines in res/values/stings.xml file
+3) Add the following lines in res/values/stings.xml file
 ```xml
     <string name="appngage_id">YOUR APPNGAGE API KEY</string>
     <string name="gcm_sender_id">YOUR GCM SENDER ID</string>
@@ -131,7 +131,7 @@ Make sure you are connected to network during the integration.
  Be sure to replace <b>YOUR APPNGAGE APT KEY</b> with your actual <b>APPNGAGE API KEY</b> from Appngage Dashboard.
  Also replace <b>YOUR GCM SENDER ID</b> with your actual <b>GCM SENDER ID</b> that you obtained earlier.</pre>
  
-###Configure your In App Chat
+4)Configure your In App Chat
 
 Finally in Adndroid side after the above steps are done, 
 
