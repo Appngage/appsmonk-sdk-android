@@ -73,59 +73,95 @@ Your Google Authorization Key (e.g. AIzaSyABaO6Pjb_4XHhYfMqSNVKlw41GCC3d6pw)
 You will need to input the GCM Sender ID below in the config file of Appngege. The Google authorization key is not used in code, 
 but needs to be placed within your app's settings page on the Appngage dashboard.
 
+###Here are the steps to create an app in our dashboard.
 
-###Configure your AndroidManifest.xml
+1) Go to Link: [https://dashboard.appngage.com](https://dashboard.appngage.com)
 
-Add the following lines to your AndroidManifest.xml within the <manifest...>
+2) Register as a new user.
 
+3) Click on 'Add an app' button to add the app and enter your GCM Server API Key and click on 'save'.
 
-<manifest...>
-
-   <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />  
-    <!-- Optional permissions. GET_ACCOUNTS is used to pre-populate customer's email in form fields. -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <!-- Optional permissions. WRITE_EXTERNAL_STORAGE is used to improve the performance by storing campaign images. -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-1. Create an App in our dashboard. Link: [https://dashboard.appngage.com](https://dashboard.appngage.com)
-
-2. Download SDK:
-
-Appngage SDK source for Android Studio can be downloaded from [Here](https://dashboard.appngage.com/documentation), this includes test App.
-
+You will get the Appngage API key once you save the App and you can see the same under 'settings tab'.
 
 ###Initializing the Appngage SDK
 
-1)  Initialize the Appngage SDK by calling 
-```php
-mAppngage.getInstance()
-```
-```php
-mAppngage = NgageManager.getInstance(this);
-```
-```php
-mAppngage.requestGcmRegistrationId(this);
-```
-```php
-mAppngage.setOnline();
-```
-```php
-in onCreate() method of your application Main Activity class.
-```
+Here are the steps:
+<pre>
+Be sure to replace <b>YOUR.PACKAGE</b> with your actual package name, for example: <b>com.google.android</b>
+Make sure you are connected to network during the integration.
+</pre>
+
+1)  Add the following line in dependencies in the App build.gradle file:
+   > compile 'com.appngage:gcm:0.0.1'
    
-2)  For further customization, call any of these methods.
-```php
-setUserId(String userId);  // If you would like to pass your App's user ID as a unique identifier. If not called, a screen will be prompted asking User's name.
+###Configure your AndroidManifest.xml
+
+   a) Add the following lines in Manifest.xml file
+   ```xml
+       <uses-permission android:name="android.permission.INTERNET" /> //(Ignore if already included in your App)
+       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> //(Ignore if already included in your App)
+       <permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />  //(Ignore if
+       already included in your App)
+       <uses-permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" />  //(Ignore if already included in your App)
+   ```
+   b) Add the following lines at the end under application tag in AndroidManifest.xml file. 
+   ```xml
+       <meta-data
+       android:name="appngage_id"
+       android:value="@string/appngage_id"></meta-data>
+       
+       <meta-data
+       android:name="gcm_sender_id"
+       android:value="@string/gcm_sender_id"></meta-data>
+   
+       <meta-data
+       android:name="gcm_launching_activity"
+       android:value="YOUR.PACKAGE.YOUR_LAUNCHING_ACTIVITY"></meta-data>
+   ```
+   <pre>
+   Be sure to replace <b>YOUR_LAUNCHING_ACTIVITY</b> with your actual <b>LAUNCHING ACTIVITY</b>
+   </pre>
+   
+2) Add the following lines in res/values/stings.xml file
+```xml
+    <string name="appngage_id">YOUR APPNGAGE API KEY</string>
+    <string name="gcm_sender_id">YOUR GCM SENDER ID</string>
+ ```
+ <pre>
+ Be sure to replace <b>YOUR APPNGAGE APT KEY</b> with your actual <b>APPNGAGE API KEY</b> from Appngage Dashboard.
+ Also replace <b>YOUR GCM SENDER ID</b> with your actual <b>GCM SENDER ID</b> that you obtained earlier.</pre>
+ 
+###Configure your In App Chat
+
+Finally in Adndroid side after the above steps are done, 
+
+Add the following lines in the your launching activity file.
+```java
+import com.appngage.api.NgageManager;
+import com.appngage.io.VolleyHelper;
+
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+    private Button button;
+    private NgageManager mAppngage;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button = (Button) findViewById(R.id.in_app_message);
+        button.setOnClickListener(this);
+        VolleyHelper.getInstance().initVolley(this);
+        mAppngage = NgageManager.getInstance(this);
+        mAppngage.requestGcmRegistrationId(this);
+    }
+@Override
+public void onClick(View view) {
+    mAppngage.startChat();
+}
+}
 ```
-```php
-setHeaderColor(int color); //Theme color according to your app.
-```
-```php
-setDarkTitle(Boolean isDark); // If theme color is on the lighter side.
-```
+Here, the button refers to the button in your app which you would want to lead to Chat Support.
+
 Alright!
+
 We're set to take Off.
 
