@@ -96,27 +96,27 @@ Make sure you are connected to network during the integration.
    
 2)  Configure your AndroidManifest.xml
 
-         a) Add the following lines in Manifest.xml file
+  a) Add the following lines in Manifest.xml file
 ```xml
-             <uses-permission android:name="android.permission.INTERNET" /> //(Ignore if already included in your App)
-             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> //(Ignore if already included in your App)
-             <permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />  //(Ignore if
-             already included in your App)
-             <uses-permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" />  //(Ignore if already included in your App)
+    <uses-permission android:name="android.permission.INTERNET" /> //(Ignore if already included in your App)
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> //(Ignore if already included in your App)
+    <permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />  //(Ignore if
+    already included in your App)
+    <uses-permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" />  //(Ignore if already included in your App)
 ```
-         b) Add the following lines at the end under application tag in AndroidManifest.xml file. 
+   b) Add the following lines at the end under application tag in AndroidManifest.xml file. 
 ```xml
-             <meta-data
-             android:name="appngage_id"
-             android:value="@string/appngage_id"></meta-data>
-             
-             <meta-data
-             android:name="gcm_sender_id"
-             android:value="@string/gcm_sender_id"></meta-data>
-         
-             <meta-data
-             android:name="gcm_launching_activity"
-             android:value="YOUR.PACKAGE.YOUR_LAUNCHING_ACTIVITY"></meta-data>
+    <meta-data
+    android:name="appngage_id"
+    android:value="@string/appngage_id"></meta-data>
+    
+    <meta-data
+    android:name="gcm_sender_id"
+    android:value="@string/gcm_sender_id"></meta-data>
+   
+    <meta-data
+    android:name="gcm_launching_activity"
+    android:value="YOUR.PACKAGE.YOUR_LAUNCHING_ACTIVITY"></meta-data>
 ```
    <pre>
    Be sure to replace <b>YOUR_LAUNCHING_ACTIVITY</b> with your actual <b>LAUNCHING ACTIVITY</b>
@@ -137,27 +137,27 @@ Finally in Adndroid side after the above steps are done,
 
 Add the following lines in the your launching activity file.
 ```java
-import com.appngage.api.NgageManager;
-import com.appngage.io.VolleyHelper;
-
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
-    private Button button;
-    private NgageManager mAppngage;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.in_app_message);
-        button.setOnClickListener(this);
-        VolleyHelper.getInstance().initVolley(this);
-        mAppngage = NgageManager.getInstance(this);
-        mAppngage.requestGcmRegistrationId(this);
-    }
-@Override
-public void onClick(View view) {
-    mAppngage.startChat();
-}
-}
+   import com.appngage.api.NgageManager;
+   import com.appngage.io.VolleyHelper;
+   
+   public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+       private Button button;
+       private NgageManager mAppngage;
+       @Override
+       protected void onCreate(Bundle savedInstanceState) {
+           super.onCreate(savedInstanceState);
+           setContentView(R.layout.activity_main);
+           button = (Button) findViewById(R.id.in_app_message);
+           button.setOnClickListener(this);
+           VolleyHelper.getInstance().initVolley(this);
+           mAppngage = NgageManager.getInstance(this);
+           mAppngage.requestGcmRegistrationId(this);
+       }
+   @Override
+   public void onClick(View view) {
+       mAppngage.startChat();
+   }
+   }
 ```
 Here, the button refers to the button in your app which you would want to lead to Chat Support.
 
