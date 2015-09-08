@@ -83,7 +83,7 @@ but needs to be placed within your app's settings page on the Appngage dashboard
 
 You will get the Appngage API key once you save the App and you can see the same under 'settings tab'.
 
-###Initializing the Appngage SDK
+###Initializing Appngage SDK With Android Studio
 
 Here are the steps:
 <pre>
