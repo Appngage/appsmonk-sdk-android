@@ -136,7 +136,6 @@ Make sure you are connected to network during the integration.
 Finally after the above steps are done, 
 
 Add the following lines in the your launching activity file.
-
 Below shown is a sample code of a Launching Activity file.
 ```java
    import com.appngage.api.NgageManager;
