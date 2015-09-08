@@ -131,11 +131,12 @@ Make sure you are connected to network during the integration.
  Be sure to replace <b>YOUR APPNGAGE APT KEY</b> with your actual <b>APPNGAGE API KEY</b> from Appngage Dashboard.
  Also replace <b>YOUR GCM SENDER ID</b> with your actual <b>GCM SENDER ID</b> that you obtained earlier.</pre>
  
-4)Configure your In App Chat
+4)Configure In App Chat
 
-Finally in Adndroid side after the above steps are done, 
+Finally after the above steps are done, 
 
 Add the following lines in the your launching activity file.
+Below shown is a sample code of a Launching Activity file.
 ```java
    import com.appngage.api.NgageManager;
    import com.appngage.io.VolleyHelper;
@@ -147,7 +148,7 @@ Add the following lines in the your launching activity file.
        protected void onCreate(Bundle savedInstanceState) {
            super.onCreate(savedInstanceState);
            setContentView(R.layout.activity_main);
-           button = (Button) findViewById(R.id.in_app_message);
+           button = (Button) findViewById(R.id.in_app_message_button);
            button.setOnClickListener(this);
            VolleyHelper.getInstance().initVolley(this);
            mAppngage = NgageManager.getInstance(this);
@@ -156,7 +157,7 @@ Add the following lines in the your launching activity file.
    @Override
    public void onClick(View view) {
        mAppngage.startChat();
-   }
+      }
    }
 ```
 Here, the button refers to the button in your app which you would want to lead to Chat Support.
