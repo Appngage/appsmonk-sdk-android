@@ -165,8 +165,8 @@ Here, the button refers to the button in your app which you would want to lead t
 
 5)  For further customization, call any of these methods in the onCreate() method of your launch activity.
 ```java
-mAppngage.setUserId(String userId); // If you would like to pass your App's user ID as a unique identifier. If not called, a screen will be prompted asking User's name.
-mAppngage.setHeaderColor(int color); //Theme color according to your app.
+mAppngage.setUserId("ANY_STRING_OR_USERID"); // If you would like to pass your App's user ID as a unique identifier. If not called, a screen will be prompted asking User's name.
+mAppngage.setHeaderColor(Color.parseColor("#COLOR_CODE")); //Theme color according to your app.
 mAppngage.setDarkTitle(Boolean isDark);// If theme color is on the lighter side.
 ```
 Alright!
