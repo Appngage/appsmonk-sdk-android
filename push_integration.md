@@ -27,12 +27,9 @@ The body of the request must contain a valid POST parameters mentioned below:
 
 ```
 campaign_name:hellooo 
-push_time:specify
 push_date_time:2015-09-29 12:54:55
-user_target:all
 group_target[]:1
 group_target[]:3
-group_target[]:4
 location_target[]:IN
 location_target[]:US
 creative_heading[]:Creative Number 1					
@@ -84,7 +81,6 @@ creative_percentage[]:50
 					);
 					
                     $headers = array(
-							'Authorization: key=' . $apiKey,
 							'Content-Type: application/x-www-form-urlencoded; charset=UTF-8'
 					);
 					$url = 'https://dashboard.appngage.com/run_campaign';
