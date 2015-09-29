@@ -48,10 +48,8 @@ creative_percentage[]:50
 ```
 ####parameters
 - <b>campaign_name</b>: Unique name of the campaign (string).
-- <b>push_time</b>: now/specify [now - the campaign will be published immediately | specify - the campaign will publish at specified time]
-- <b>push_date_time</b>: Time that Appngage servers will start sending push notifications GMT (UTC+0000). Format is "yyyy-MM-dd HH:mm:ss eg:2015-09-29 05:09:19". Alternatively, if "now" is assigned(push_time), the campaign will activate and send immediately (string, optional).
-- <b>user_target</b>: all/groups [all - targets all the segments | groups - you have to specify which are the segments you want to target]
-- <b>group_target[]</b>: (number, optional) [1 - New | 2 - Engaged | 3 - Inactive | 4 - One-Time ]
+- <b>push_date_time</b>: Time that Appngage servers will start sending push notifications GMT (UTC+0000). Format is "yyyy-MM-dd HH:mm:ss eg:2015-09-29 05:09:19". Alternatively, if "now" is assigned, the campaign will activate and send immediately (string).
+- <b>group_target[]</b>:[0 - All | 1 - New | 2 - Engaged | 3 - Inactive | 4 - One-Time ]
 - <b>location_target[]</b>: (county code, optional)
 
 > creatives 
@@ -75,9 +73,7 @@ creative_percentage[]:50
 ```php
                 $post = array(
       							'campaign_name' => 'hellooo', 
-                    'push_time' => 'specify',
                     'push_date_time' => '2015-09-29 12:54:55'
-                    'user_target' => 'all'
                     'group_target' => array(1,2,3,4),
                     'location_target' => array('IN','US'),
                     'creative_heading' => array('creative heading 1','creative heading 2'),				
