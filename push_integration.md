@@ -49,7 +49,7 @@ creative_percentage[]:50
 ####parameters
 - <b>campaign_name</b>: Unique name of the campaign (string).
 - <b>push_date_time</b>: Time that Appngage servers will start sending push notifications GMT (UTC+0000). Format is "yyyy-MM-dd HH:mm:ss eg:2015-09-29 05:09:19". Alternatively, if "now" is assigned, the campaign will activate and send immediately (string).
-- <b>group_target[]</b>:[0 - All | 1 - New | 2 - Engaged | 3 - Inactive | 4 - One-Time ] (number,optional)
+- <b>group_target[]</b>: {0 - All | 1 - New | 2 - Engaged | 3 - Inactive | 4 - One-Time }  (number,optional)
 - <b>location_target[]</b>: (county code, optional)
 
 > creatives 
