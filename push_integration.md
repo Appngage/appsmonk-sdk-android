@@ -23,31 +23,27 @@ Request content-type must be 'application/x-www-form-urlencoded; charset=UTF-8'.
 
 ####Body
 
-The body of the request must contain a valid POST parameters mentioned below:
+The body of the request must contain a valid POST parameters as example mentioned below :
 
-```
-campaign_name:hellooo 
-push_date_time:2015-09-29 12:54:55
-group_target[]:1
-group_target[]:3
-location_target[]:IN
-location_target[]:US
-creative_heading[]:Creative Number 1					
-creative_img[]:http://somewhere/here/there/some_file_name.png
-deeplink[]:
-creative_text[]:Hello How is it going .?
-creative_percentage[]:50
-creative_heading[]:Creative Number 2	
-creative_img[]:http://somewhere/elseWhere/there/here/other_file_name.png
-deeplink[]:
-creative_text[]:Can we help you with anything ?
-creative_percentage[]:50
+```json
+{
+	"api_key":"1437e190930328c8c1eb512cc096634a",
+	"campaign_name":"this campaign is called by",
+	push_date_time":"now",
+	"group_target":["1","2","3","4"],
+	"creative_heading":["creative heading number 1","creative heading number 2"],
+	"creative_img":["http://somewhere/here/there/some_file_name.png","http://somewhere/elseWhere/there/here/other_file_name.png"],
+	"deeplink":[],
+	"creative_text":["Hello How is it going .? called with API","can we help with anything ..? called with API"],
+	"creative_percentage":["50","50"]
+}
 ```
 ####parameters
+-<b>api_key</b>: Unique api_key(live_key) of app obtained from [Appngage DashBoard](https://dashboard.appngage.com/)
 - <b>campaign_name</b>: Unique name of the campaign (string).
 - <b>push_date_time</b>: Time that Appngage servers will start sending push notifications GMT (UTC+0000). Format is "yyyy-MM-dd HH:mm:ss eg:2015-09-29 05:09:19". Alternatively, if "now" is assigned, the campaign will activate and send immediately (string).
-- <b>group_target[]</b>: {0 - All | 1 - New | 2 - Engaged | 3 - Inactive | 4 - One-Time }  (number,optional)
-- <b>location_target[]</b>: (county code, optional)
+- <b>group_target[]</b>: { 1 - New | 2 - Engaged | 3 - Inactive | 4 - One-Time } if not mentioned anytning it'll be sent to All users (number,optional)
+- <b>location_target[]</b>: {IN - India | US - United States } if not mentioned anything it'll be set to all Locations (county code, optional)
 
 > creatives 
 
@@ -65,38 +61,62 @@ creative_percentage[]:50
 - <b>creative_text[]</b>:The Message that will be displayed upon opening the push notification. 
 - <b>creative_percentage[]</b>: Percentage of users that this variant will be sent 
 
+####Responses
+
+<b>Success</b>
+
+If the POST to the API endpoint is successfull you will receieve an 
+```json
+{"resp":{"status":0,"msg":"Push sent successfully"}}
+```
+Or
+```json
+{"resp":{"status":0,"msg":"Push successfully Recorded"}}
+```
+Failure
+
+If the POST data does not meet the API requirements you will receive an actionable error message. Contact us at support@batch.com if you need further support.
+
+INVALID_DATE {"resp":{"status":0,"msg":"Invalid Date"}} //Date it should be equal to current date or higher
+Invalid_COUNTRY_CODE {"resp":{"status":0,"msg":"Invalid Country Code"}} //Country Code should be from the list given below
+SEGMENT_INVAID {"resp":{"status":0,"msg":"Invalid Segment Id"}} // SEGMENT Id should be between 1-4
+API_KEY_INVALID {"resp":{"status":0,"msg":"Invalid API Key"}} // Must provide Valid api_key
+
+
+
 ####CURL example for PHP
 
 ```php
                 $post = array(
-      							'campaign_name' => 'hellooo', 
-                    'push_date_time' => '2015-09-29 12:54:55'
-                    'group_target' => array(1,2,3,4),
+					'api_key' => '1437e190930328c8c1eb512cc096634a',
+                    'campaign_name' => 'this campaign is called by API',
+                    'push_date_time' => 'now',
+                    'group_target' => array('1','2','3','4'),
                     'location_target' => array('IN','US'),
-                    'creative_heading' => array('creative heading 1','creative heading 2'),				
+                    'creative_heading' => array('creative heading number 1','creative heading number 2'),             
                     'creative_img' => array('http://somewhere/here/there/some_file_name.png','http://somewhere/elseWhere/there/here/other_file_name.png'),
                     'deeplink' => array(),
-                    'creative_text' => array('Hello How is it going .?','can we help with anything'),
-                    creative_percentage[] => array('50','50')
-					);
-					
+                    'creative_text' => array('Hello How is it going .? called with API','can we help with anything ..? called with API'),
+                    'creative_percentage' => array('50','50')
+                    );
+
                     $headers = array(
-							'Content-Type: application/x-www-form-urlencoded; charset=UTF-8'
-					);
-					$url = 'https://dashboard.appngage.com/run_campaign';
-					$ch = curl_init();
-					curl_setopt( $ch, CURLOPT_URL, $url );
-					curl_setopt( $ch, CURLOPT_POST, true );
-					curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0);
-					curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
-					curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-					curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $post ) );
-					echo $result = curl_exec( $ch );
-					if ( curl_errno( $ch ) )
-					{
-						echo 'Error: ' . curl_error( $ch );
-					}
-					curl_close( $ch );
+                            'Content-Type: application/json'
+                    );
+                    $url = 'http://localhost/appngage/engagement/save_campaign_run_api';
+                    $ch = curl_init();
+                    curl_setopt( $ch, CURLOPT_URL, $url );
+                    curl_setopt( $ch, CURLOPT_POST, true );
+                    curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0);
+                    curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
+                    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+                    curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode($post));
+                   	echo $result = curl_exec( $ch );
+                    if ( curl_errno( $ch ) )
+                    {
+                         echo 'Error: ' . curl_error( $ch );
+                    }
+                    curl_close( $ch );
 ```
 
 #### Valid Country Codes
