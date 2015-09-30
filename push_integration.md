@@ -19,7 +19,7 @@ Appngage Push Campaign POST at:
 
 ###Request structure
 
-Request content-type must be 'application/x-www-form-urlencoded'.
+Request content-type must be 'application/json'.
 
 ###Body
 
