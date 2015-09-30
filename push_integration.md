@@ -2,7 +2,7 @@
 
 The Appngage Push Campaign API is an API that allows users to send push campaigns from your own systems.
 
-###Prerequisites
+##Prerequisites
 
 - Appngage Push API token.
 
@@ -11,23 +11,23 @@ The Appngage Push Campaign API is an API that allows users to send push campaign
 
 > Both can be obtained from the settings page of the [Appngage DashBoard](https://dashboard.appngage.com/)
 
-###Calling Push Campaign API
+##Calling Push Campaign API
  
 Appngage Push Campaign POST at:
 
 [https://dashboard.appngage.com/run_campaign](https://dashboard.appngage.com/run_campaign)
 
-####Request structure
+###Request structure
 
-Request content-type must be 'application/x-www-form-urlencoded; charset=UTF-8'.
+Request content-type must be 'application/x-www-form-urlencoded'.
 
-####Body
+###Body
 
 The body of the request must contain a valid POST parameters as example mentioned below :
 
-```json
+```
 {
-	"api_key":"1437e190930328c8c1eb512cc096634a",
+	"api_key":"YOUR APP live key",
 	"campaign_name":"this campaign is called by",
 	push_date_time":"now",
 	"group_target":["1","2","3","4"],
@@ -38,7 +38,7 @@ The body of the request must contain a valid POST parameters as example mentione
 	"creative_percentage":["50","50"]
 }
 ```
-####parameters
+###parameters
 -<b>api_key</b>: Unique api_key(live_key) of app obtained from [Appngage DashBoard](https://dashboard.appngage.com/)
 - <b>campaign_name</b>: Unique name of the campaign (string).
 - <b>push_date_time</b>: Time that Appngage servers will start sending push notifications GMT (UTC+0000). Format is "yyyy-MM-dd HH:mm:ss eg:2015-09-29 05:09:19". Alternatively, if "now" is assigned, the campaign will activate and send immediately (string).
@@ -61,9 +61,9 @@ The body of the request must contain a valid POST parameters as example mentione
 - <b>creative_text[]</b>:The Message that will be displayed upon opening the push notification. 
 - <b>creative_percentage[]</b>: Percentage of users that this variant will be sent 
 
-####Responses
+###Responses
 
-<b>Success</b>
+####Success</b>
 
 If the POST to the API endpoint is successfull you will receieve an 
 ```json
@@ -75,20 +75,21 @@ Or
 ```
 Failure
 
-If the POST data does not meet the API requirements you will receive an actionable error message. Contact us at support@batch.com if you need further support.
+```
+If the POST data does not meet the API requirements you will receive an actionable error message. Contact us at hello@appngage.com if you need further support.
 
 INVALID_DATE {"resp":{"status":0,"msg":"Invalid Date"}} //Date it should be equal to current date or higher
 Invalid_COUNTRY_CODE {"resp":{"status":0,"msg":"Invalid Country Code"}} //Country Code should be from the list given below
 SEGMENT_INVAID {"resp":{"status":0,"msg":"Invalid Segment Id"}} // SEGMENT Id should be between 1-4
 API_KEY_INVALID {"resp":{"status":0,"msg":"Invalid API Key"}} // Must provide Valid api_key
+```
 
 
-
-####CURL example for PHP
+###CURL example for PHP
 
 ```php
                 $post = array(
-					'api_key' => '1437e190930328c8c1eb512cc096634a',
+					'api_key' => 'Your App LIVE KEY',
                     'campaign_name' => 'this campaign is called by API',
                     'push_date_time' => 'now',
                     'group_target' => array('1','2','3','4'),
@@ -119,7 +120,7 @@ API_KEY_INVALID {"resp":{"status":0,"msg":"Invalid API Key"}} // Must provide Va
                     curl_close( $ch );
 ```
 
-#### Valid Country Codes
+### Valid Country Codes
 
 ```
 * AD    Andorra
