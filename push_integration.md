@@ -104,7 +104,7 @@ API_KEY_INVALID {"resp":{"status":0,"msg":"Invalid API Key"}} // Must provide Va
                     $headers = array(
                             'Content-Type: application/json'
                     );
-                    $url = 'http://localhost/appngage/engagement/save_campaign_run_api';
+                    $url = 'https://dashboard.appngage.com/run_campaign_api';
                     $ch = curl_init();
                     curl_setopt( $ch, CURLOPT_URL, $url );
                     curl_setopt( $ch, CURLOPT_POST, true );
