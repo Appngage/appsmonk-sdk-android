@@ -73,7 +73,7 @@ Or
 ```json
 {"resp":{"status":0,"msg":"Push successfully Recorded"}}
 ```
-Failure
+####Failure
 
 ```
 If the POST data does not meet the API requirements you will receive an actionable error message. Contact us at hello@appngage.com if you need further support.
