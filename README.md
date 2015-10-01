@@ -93,7 +93,7 @@ Make sure you are connected to network during the integration.
 
 1)  Add the following line in dependencies in the App build.gradle file:
    ```
-   compile 'com.appngage:gcm:0.0.1'
+   compile 'com.appngage:gcm:0.0.3+'
    ```
 2)  Configure your AndroidManifest.xml
 
@@ -118,6 +118,10 @@ Make sure you are connected to network during the integration.
     <meta-data
     android:name="gcm_launching_activity"
     android:value="YOUR.PACKAGE.YOUR_LAUNCHING_ACTIVITY"></meta-data>
+    
+    <meta-data
+            android:name="gcm_enable_notification_access"
+            android:value="disable" />
 ```
    <pre>
    Be sure to replace <b>YOUR_LAUNCHING_ACTIVITY</b> with your actual <b>LAUNCHING ACTIVITY</b>
@@ -132,12 +136,12 @@ Make sure you are connected to network during the integration.
  Be sure to replace <b>YOUR APPNGAGE APT KEY</b> with your actual <b>APPNGAGE API KEY</b> from Appngage Dashboard.
  Also replace <b>YOUR GCM SENDER ID</b> with your actual <b>GCM SENDER ID</b> that you obtained earlier.</pre>
  
-4)Configure In App Chat
+4)Configure Push and In App Chat
 
 Finally after the above steps are done, 
 
 Add the following lines in the your launching activity file.
-Below shown is a sample code of a Launching Activity file.
+Below shown is a sample code of the Launching Activity file.
 ```java
    import com.appngage.api.NgageManager;
    import com.appngage.io.VolleyHelper;
@@ -151,14 +155,34 @@ Below shown is a sample code of a Launching Activity file.
            setContentView(R.layout.activity_main);
            button = (Button) findViewById(R.id.in_app_message_button);
            button.setOnClickListener(this);
-           VolleyHelper.getInstance().initVolley(this);
            mAppngage = NgageManager.getInstance(this);
-           mAppngage.requestGcmRegistrationId(this);
+           mAppngage.initManager(this);
        }
    @Override
    public void onClick(View view) {
        mAppngage.startChat();
       }
+      
+      @Override
+    protected void onStart() {
+        super.onStart();
+        // Call below method when application is opening -  It is optional and it will be used for tracking
+        mAppngage.onOpenApplication();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Call below method when application is exiting -  It is optional and it will be used for tracking
+        mAppngage.onCloseApplication();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Call below method when application while app exit - Mandatory
+        mAppngage.clear();
+    }
    }
 ```
 Here, the button refers to the button in your app which you would want to lead to Chat Support.
