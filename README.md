@@ -104,6 +104,7 @@ Make sure you are connected to network during the integration.
     <permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />  //(Ignore if
     already included in your App)
     <uses-permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" />  //(Ignore if already included in your App)
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
 ```
    b) Add the following lines at the end under application tag in AndroidManifest.xml file. 
 ```xml
@@ -157,7 +158,24 @@ Below shown is a sample code of the Launching Activity file.
            button.setOnClickListener(this);
            mAppngage = NgageManager.getInstance(this);
            mAppngage.initManager(this);
+           onHandleIntent(getIntent());
        }
+       
+   private void onHandleIntent(Intent intent) {
+        //Check if the push is from Appngage
+        if (mAppngage.isFromAppNgage(intent)) {
+            GCMItem gcmItem = mAppngage.getGCMItem(intent);
+        } else {
+            //Handle your custom push here...
+        }
+    }
+    
+   @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        onHandleIntent(intent);
+    }
+    
    @Override
    public void onClick(View view) {
        mAppngage.startChat();
@@ -166,21 +184,21 @@ Below shown is a sample code of the Launching Activity file.
       @Override
     protected void onStart() {
         super.onStart();
-        // Call below method when application is opening -  It is optional and it will be used for tracking
+        // Call below method when your application opens.
         mAppngage.onOpenApplication();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        // Call below method when application is exiting -  It is optional and it will be used for tracking
+        // Call below method when your application exits.
         mAppngage.onCloseApplication();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Call below method when application while app exit - Mandatory
+        // Call below method when application exits - Mandatory
         mAppngage.clear();
     }
    }
