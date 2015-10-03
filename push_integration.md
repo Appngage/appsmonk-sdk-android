@@ -40,10 +40,10 @@ The body of the request must contain a valid POST parameters as example mentione
 ```
 ###parameters
 -<b>api_key</b>: Unique api_key(live_key) of app obtained from [Appngage DashBoard](https://dashboard.appngage.com/)
-- <b>campaign_name</b>: Unique name of the campaign (string).
-- <b>push_date_time</b>: Time that Appngage servers will start sending push notifications GMT (UTC+0000). Format is "yyyy-MM-dd HH:mm:ss eg:2015-09-29 05:09:19". Alternatively, if "now" is assigned, the campaign will activate and send immediately (string).
-- <b>group_target[]</b>: { 1 - New | 2 - Engaged | 3 - Inactive | 4 - One-Time } if not mentioned anytning it'll be sent to All users (number,optional)
-- <b>location_target[]</b>: {IN - India | US - United States } if not mentioned anything it'll be set to all Locations (county code, optional)
+- <b>campaign_name</b> (string): Unique name of the campaign.
+- <b>push_date_time</b> (string): Time that Appngage servers will start sending push notifications GMT (UTC+0000). Format is "yyyy-MM-dd HH:mm:ss eg:2015-09-29 05:09:19". Alternatively, if "now" is assigned, the campaign will activate and send immediately .
+- <b>group_target[]</b> (number,optional): [ 1 - New | 2 - Engaged | 3 - Inactive | 4 - One-Time ] if not mentioned anytning it'll be sent to All users 
+- <b>location_target[]</b> (county code, optional): [IN - India | US - United States ] if not mentioned anything it'll be set to all Locations 
 
 > creatives 
 
