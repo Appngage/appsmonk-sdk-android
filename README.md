@@ -104,7 +104,6 @@ Make sure you are connected to network during the integration.
     <permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" android:protectionLevel="signature" />  //(Ignore if
     already included in your App)
     <uses-permission android:name="YOUR.PACKAGE.permission.C2D_MESSAGE" />  //(Ignore if already included in your App)
-    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
 ```
    b) Add the following lines at the end under application tag in AndroidManifest.xml file. 
 ```xml
@@ -120,9 +119,6 @@ Make sure you are connected to network during the integration.
     android:name="gcm_launching_activity"
     android:value="YOUR.PACKAGE.YOUR_LAUNCHING_ACTIVITY"></meta-data>
     
-    <meta-data
-            android:name="gcm_enable_notification_access"
-            android:value="disable" />
 ```
    <pre>
    Be sure to replace <b>YOUR_LAUNCHING_ACTIVITY</b> with your actual <b>LAUNCHING ACTIVITY</b>
@@ -130,12 +126,12 @@ Make sure you are connected to network during the integration.
    
 3) Add the following lines in res/values/stings.xml file
 ```xml
-    <string name="appngage_id">YOUR APPNGAGE API KEY</string>
-    <string name="gcm_sender_id">YOUR GCM SENDER ID</string>
+    <string name="appngage_id">YOUR_APPNGAGE_API_KEY</string>
+    <string name="gcm_sender_id">YOUR_GCM_SENDER_ID</string>
  ```
  <pre>
- Be sure to replace <b>YOUR APPNGAGE APT KEY</b> with your actual <b>APPNGAGE API KEY</b> from Appngage Dashboard.
- Also replace <b>YOUR GCM SENDER ID</b> with your actual <b>GCM SENDER ID</b> that you obtained earlier.</pre>
+ Be sure to replace <b>YOUR_APPNGAGE_APT_KEY</b> with your actual <b>APPNGAGE API KEY</b> from Appngage Dashboard.
+ Also replace <b>YOUR_GCM_SENDER_ID</b> with your actual <b>GCM SENDER ID</b> that you obtained earlier.</pre>
  
 4)Configure Push and In App Chat
 
@@ -145,7 +141,7 @@ Add the following lines in the your launching activity file.
 Below shown is a sample code of the Launching Activity file.
 ```java
    import com.appngage.api.NgageManager;
-   import com.appngage.io.VolleyHelper;
+   import com.appngage.gcm.dto.GCMItem;
    
    public class MainActivity extends ActionBarActivity implements View.OnClickListener {
        private Button button;
