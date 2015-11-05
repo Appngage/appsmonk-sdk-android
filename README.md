@@ -93,7 +93,7 @@ Make sure you are connected to network during the integration.
 
 1)  Add the following line in dependencies in the App build.gradle file:
    ```
-   compile 'com.appngage:gcm:0.0.8'
+   compile 'com.appngage:gcm:0.1.4'
    ```
 2)  Configure your AndroidManifest.xml
 
