@@ -91,9 +91,14 @@ Be sure to replace <b>YOUR.PACKAGE</b> with your actual package name, for exampl
 Make sure you are connected to network during the integration.
 </pre>
 
-1)  Add the following line in dependencies in the App build.gradle file:
+1)  Configure your App build.gradle file:
+   a) Add the following line under the dependencies section.
    ```
-   compile 'com.appngage:gcm:0.2.6'
+   compile 'com.appngage:gcm:0.2.8'
+   ```
+   b) Add the following line under the defaultConfig section
+   ```
+   multiDexEnabled true
    ```
 2)  Configure your AndroidManifest.xml
 
