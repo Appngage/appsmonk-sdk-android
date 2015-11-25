@@ -92,6 +92,7 @@ Make sure you are connected to network during the integration.
 </pre>
 
 1)  Configure your App build.gradle file:
+   
    a) Add the following line under the dependencies section.
    ```
    compile 'com.appngage:gcm:0.3.0'
