@@ -75,11 +75,13 @@ but needs to be placed within your app's settings page on the Appngage dashboard
 
 ###Here are the steps to create an app in our dashboard.
 
-1) Go to Link: [https://dashboard.appngage.com](https://dashboard.appngage.com)
+1) Go to Link: [https://appngage.com](https://appngage.com) and request access.
 
-2) Register as a new user.
+2) We will send an email with the registration link to appngage dashboard
 
-3) Click on 'Add an app' button to add the app and enter your GCM Server API Key and click on 'save'.
+3) Follow the link and Register.
+
+4) Click on 'Add an app' button to add the app and enter your GCM Server API Key and click on 'save'.
 
 You will get the Appngage API key once you save the App and you can see the same under 'settings tab'.
 
