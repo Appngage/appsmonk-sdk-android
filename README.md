@@ -161,8 +161,15 @@ Below shown is a sample code of the Launching Activity file.
            button = (Button) findViewById(R.id.in_app_message_button);
            button.setOnClickListener(this);
            mAppngage = NgageManager.getInstance(this);
-           mAppngage.initManager(this);
-           onHandleIntent(getIntent());
+           try {
+               mAppngage.setUserFirstName("TestFnamee")
+                       .setUserPhoneNumber("123456987")
+                       .setUserEmailId("test@test.com")
+                       .initManager(this);
+           } catch (AppngageException e) {
+               e.printStackTrace();
+           }
+          onHandleIntent(getIntent());
        }
        
    private void onHandleIntent(Intent intent) {
@@ -211,9 +218,21 @@ Here, the button refers to the button in your app which you would want to lead t
 
 5)  For further customization, call any of these methods in the onCreate() method of your launch activity.
 ```java
-mAppngage.setUserId("ANY_STRING_OR_USERID"); // If you would like to pass your App's user ID as a unique identifier. If not called, a screen will be prompted asking User's name.
-mAppngage.setHeaderColor(Color.parseColor("#COLOR_CODE")); //Theme color according to your app.
-mAppngage.setDarkTitle(Boolean isDark);// If theme color is on the lighter side.
+HashMap<String, String> attributes = new HashMap<String, String>();
+attributes.put("Category", "Sports");
+attributes.put("Rated", "5 Stars");
+try {
+   mAppngage.setCustomAttributes(this,attributes); //Optional. Set any custom properties/attribute specific to your app.
+   mAppngage.sendCustomEvent("Browsed Samsung Galaxy SM-G920IZDAINS Phone");
+   mAppngage.setUserId("ANY_STRING_OR_USERID"); // If you would like to pass your App's user ID as a unique identifier. If not called, a screen will be prompted asking User's name.
+   mAppngage.setHeaderColor(Color.parseColor("#COLOR_CODE")); //Theme color according to your app.
+   mAppngage.setDarkTitle(Boolean isDark);// If theme color is on the lighter side.
+   mAppngage.setVibration(this,true); //Optional. Set if you need the notification vibration.
+   mAppngage.setNotificationTone(this,"Path to .mp3 file"); //Optional. Set if you need the notification tone.
+} catch (AppngageException e) {
+   e.printStackTrace();
+}
+
 ```
 Alright!
 
