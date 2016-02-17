@@ -97,7 +97,7 @@ Make sure you are connected to network during the integration.
    
    a) Add the following line under the dependencies section.
    ```
-   compile 'com.appngage:gcm:0.3.5'
+   compile 'com.appngage:gcm:0.3.6'
    ```
    b) Add the following line under the defaultConfig section
    ```
