@@ -6,7 +6,7 @@ Engage and Retain Multiple solutions to increase engagement of your app's users,
 
 It helps app developers to engage users effectively without any coding.
 
-###Integration Steps:
+##Integration Steps:
 
 Appngage uses GCM (Google Cloud Messaging) for push messages so it is only compatible with Google Play.
 
