@@ -16,12 +16,11 @@ Appngage uses GCM (Google Cloud Messaging) for push messages so it is only compa
 
 2.	Implement Appngage Push in your app.
 
-###Setting up your Google Developer project
+###Setting up Google Developer project
 
 The Appngage dashboard needs to have your authorization key to be able to push to users of your application and you'll need your GCM Sender ID to place within your app code.
 
-###STEP 1 : 
-Creating a new Google API Project
+###STEP 1 : Creating a new Google API Project
 
 Go to the Google Developers Console: https://console.developers.google.com/project
 
@@ -29,13 +28,11 @@ Create a new project
 
 ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step1.png?raw=true "Optional Title")
 
-###STEP 2 :
-Getting your GCM Sender ID
+###STEP 2 : Getting your GCM Sender ID
 
 ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step2.png?raw=true "Optional Title")
 
-###STEP 3 :
-Activating GCM API
+###STEP 3 : Activating GCM API
 
 Go to the API & Auth menu and select APIs. Then look for the Google Cloud Messaging for Android line and click on the OFF button to activate it:
 
@@ -45,8 +42,7 @@ Go to the API & Auth menu and select APIs. Then look for the Google Cloud Messag
 
 Go to your newly created project and get your Project Number at the top of the page
 
-###STEP 4 
-Getting your Authorization key
+###STEP 4 : Getting your Authorization key
 
    1 . Go to Credentials and click Create new Key:
 
