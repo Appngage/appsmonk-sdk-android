@@ -1,4 +1,4 @@
-# Appngage
+# Appsmonk
 
 Introduction: Appngage is a User Engagement and Growth Hack tool kit for Mobile Apps.
 
