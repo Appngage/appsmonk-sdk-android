@@ -217,6 +217,7 @@ Here, the button refers to the button in your app which you would want to lead t
 HashMap<String, String> attributes = new HashMap<String, String>();
 attributes.put("Category", "Sports");
 attributes.put("Rated", "5 Stars");
+attributes.put("Marital Status", "Single");
 try {
    mAppngage.setCustomAttributes(this,attributes); //Optional. Set any custom properties/attribute specific to your app.
    mAppngage.sendCustomEvent("Browsed Samsung Galaxy SM-G920IZDAINS Phone");
