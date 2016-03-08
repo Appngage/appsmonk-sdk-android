@@ -1,21 +1,21 @@
 # Push Campaign API
 
-The Appngage Push Campaign API is an API that allows users to send push campaigns from your own systems.
+The Appsmonk Push Campaign API is an API that allows users to send push campaigns from your own systems.
 
 ##Prerequisites
 
-- Appngage Push API token.
+- Appsmonk Push API token.
 
 - Live API key corresponding to the app from which you want to push.
 
 
-> Both can be obtained from the settings page of the [Appngage DashBoard](https://dashboard.appngage.com/)
+> Both can be obtained from the settings page of the [Appsmonk DashBoard](https://dashboard.appsmonk.com/)
 
 ##Calling Push Campaign API
  
-Appngage Push Campaign POST at:
+Appsmonk Push Campaign POST at:
 
-[https://dashboard.appngage.com/run_campaign](https://dashboard.appngage.com/run_campaign)
+[https://dashboard.appsmonk.com/run_campaign](https://dashboard.appsmonk.com/run_campaign)
 
 ###Request structure
 
@@ -39,16 +39,16 @@ The body of the request must contain a valid POST parameters as example mentione
 }
 ```
 ###parameters
--<b>api_key</b>: Unique api_key(live_key) of app obtained from [Appngage DashBoard](https://dashboard.appngage.com/)
+-<b>api_key</b>: Unique api_key(live_key) of app obtained from [Appsmonk DashBoard](https://dashboard.appsmonk.com/)
 - <b>campaign_name</b> (string): Unique name of the campaign.
-- <b>push_date_time</b> (string): Time that Appngage servers will start sending push notifications GMT (UTC+0000). Format is "yyyy-MM-dd HH:mm:ss eg:2015-09-29 05:09:19". Alternatively, if "now" is assigned, the campaign will activate and send immediately .
+- <b>push_date_time</b> (string): Time that Appsmonk servers will start sending push notifications GMT (UTC+0000). Format is "yyyy-MM-dd HH:mm:ss eg:2015-09-29 05:09:19". Alternatively, if "now" is assigned, the campaign will activate and send immediately .
 - <b>group_target[]</b> (arry,optional): array('test@example.com') | if mentioned 'All' it'll be sent to All users 
 
 > creatives 
 
 - <b>creative_heading[]</b>:Heading of the creative number 1				
 - <b>creative_img[]</b>: A link/URL of an image which apears in the push notifications expanded view (Optional)
-- <b>deeplink[]</b>:A link/URL based on a URL scheme that you specify within your app. Appngage Push campaigns can accept this link scheme to direct users to a particular area within your app upon opening the push notification. (Optional)
+- <b>deeplink[]</b>:A link/URL based on a URL scheme that you specify within your app. Appsmonk Push campaigns can accept this link scheme to direct users to a particular area within your app upon opening the push notification. (Optional)
 - <b>creative_text[]</b>: The Message that will be displayed upon opening the push notification. 
 - <b>creative_percentage[]</b>:Percentage of users that this variant will be sent
 
@@ -56,7 +56,7 @@ The body of the request must contain a valid POST parameters as example mentione
 
 - <b>creative_heading[]</b>:Heading of the creative number 2
 - <b>creative_img[]</b>:A link/URL of an image which apears in the push notifications expanded view (Optional)
-- <b>deeplink[]</b>:A link/URL based on a URL scheme that you specify within your app. Appngage Push campaigns can accept this link scheme to direct users to a particular area within your app upon opening the push notification. (Optional)
+- <b>deeplink[]</b>:A link/URL based on a URL scheme that you specify within your app. Appsmonk Push campaigns can accept this link scheme to direct users to a particular area within your app upon opening the push notification. (Optional)
 - <b>creative_text[]</b>:The Message that will be displayed upon opening the push notification. 
 - <b>creative_percentage[]</b>: Percentage of users that this variant will be sent 
 
@@ -75,7 +75,7 @@ Or
 ####Failure
 
 ```
-If the POST data does not meet the API requirements you will receive an actionable error message. Contact us at hello@appngage.com if you need further support.
+If the POST data does not meet the API requirements you will receive an actionable error message. Contact us at hello@appsmonk.com if you need further support.
 
 INVALID_DATE {"resp":{"status":0,"msg":"Invalid Date"}} //Date it should be equal to current date or higher
 Invalid_COUNTRY_CODE {"resp":{"status":0,"msg":"Invalid Country Code"}} //Country Code should be from the list given below
