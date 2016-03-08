@@ -42,7 +42,7 @@ The body of the request must contain a valid POST parameters as example mentione
 -<b>api_key</b>: Unique api_key(live_key) of app obtained from [Appsmonk DashBoard](https://dashboard.appsmonk.com/)
 - <b>campaign_name</b> (string): Unique name of the campaign.
 - <b>push_date_time</b> (string): Time that Appsmonk servers will start sending push notifications GMT (UTC+0000). Format is "yyyy-MM-dd HH:mm:ss eg:2015-09-29 05:09:19". Alternatively, if "now" is assigned, the campaign will activate and send immediately .
-- <b>group_target[]</b> (array/string,optional): if passing Email ids pass array example array('test@example.com') | if mentioned 'All'(string) it'll be sent to All users 
+- <b>target[]</b> (array/string,optional): if passing Email ids pass array example array('test@example.com') | if mentioned 'All'(string) it'll be sent to All users 
 
 > creatives 
 
