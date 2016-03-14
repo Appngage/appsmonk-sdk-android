@@ -50,7 +50,7 @@ The body of the request must contain a valid POST parameters as example mentione
 - <b>creative_img[]</b>: A link/URL of an image which apears in the push notifications expanded view (Optional)
 - <b>deeplink[]</b>:A link/URL based on a URL scheme that you specify within your app. Appsmonk Push campaigns can accept this link scheme to direct users to a particular area within your app upon opening the push notification. (Optional)
 - <b>creative_text[]</b>: The Message that will be displayed upon opening the push notification. 
-- <b>creative_percentage[]</b>:Percentage of users that this variant will be sent
+- <b>creative_percentage[]</b>(required):Percentage of users that this variant will be sent (['100'] for 1 creative)
 
 > For multiple creatives(Fallow the same schema. Maximum number of creatives can be 10)
 
@@ -58,7 +58,7 @@ The body of the request must contain a valid POST parameters as example mentione
 - <b>creative_img[]</b>:A link/URL of an image which apears in the push notifications expanded view (Optional)
 - <b>deeplink[]</b>:A link/URL based on a URL scheme that you specify within your app. Appsmonk Push campaigns can accept this link scheme to direct users to a particular area within your app upon opening the push notification. (Optional)
 - <b>creative_text[]</b>:The Message that will be displayed upon opening the push notification. 
-- <b>creative_percentage[]</b>: Percentage of users that this variant will be sent 
+- <b>creative_percentage[]</b>(required): Percentage of users that this variant will be sent (example ['50','50'] for 2 creative)
 
 ###Responses
 
