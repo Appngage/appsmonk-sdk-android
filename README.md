@@ -147,68 +147,58 @@ Below shown is a sample code of the Launching Activity file.
    import com.appngage.api.NgageManager;
    import com.appngage.gcm.dto.GCMItem;
    
-   public class MainActivity extends ActionBarActivity implements View.OnClickListener {
-       private Button button;
-       private NgageManager mAppngage;
-       @Override
-       protected void onCreate(Bundle savedInstanceState) {
-           super.onCreate(savedInstanceState);
-           setContentView(R.layout.activity_main);
-           button = (Button) findViewById(R.id.in_app_message_button);
-           button.setOnClickListener(this);
-           mAppngage = NgageManager.getInstance(this);
-           try {
-               mAppngage.setUserFirstName("TestFnamee")
-                       .setUserPhoneNumber("123456987")
-                       .setUserEmailId("test@test.com")
-                       .initManager(this);
-           } catch (AppngageException e) {
-               e.printStackTrace();
-           }
-          onHandleIntent(getIntent());
-       }
-       
-   private void onHandleIntent(Intent intent) {
-        //Check if the push is from Appngage
-        if (mAppngage.isFromAppNgage(intent)) {
-            GCMItem gcmItem = mAppngage.getGCMItem(intent);
-        } else {
-            //Handle your custom push here...
+   
+public class MainActivity extends Activity {
+
+    private NgageManager mAppngage;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initAppNgage();
+        findViewById(R.id.clickText).setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startChat();
+
+            }
+        });
+
+    }
+
+
+    private void startChat() {
+        mAppngage.setUserId(this,"adi"); // user id used by admin in web
+                                            // dashboard
+        try {
+            // set color of Chat window header to match your toolbar/actionbar
+            // color
+            mAppngage.setHeaderColor(this,Color.parseColor("#666666"));
+        } catch (Exception e) {
+            Toast.makeText(this, "Invalid color code", Toast.LENGTH_SHORT)
+                    .show();
         }
-    }
-    
-   @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        onHandleIntent(intent);
-    }
-    
-   @Override
-   public void onClick(View view) {
-       mAppngage.startChat();
-      }
-      
-      @Override
-    protected void onStart() {
-        super.onStart();
-        // Call below method when your application opens.
-        mAppngage.onOpenApplication();
+
+        mAppngage.startChat(this);
+
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        // Call below method when your application exits.
-        mAppngage.onCloseApplication();
+    private void initAppNgage() {
+        // init Appnagage SDK
+        mAppngage = NgageManager.getInstance(this);
+        try {
+            mAppngage.initManager(this);
+        } catch (AppngageException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // Call below method when application exits - Mandatory
-        mAppngage.clear();
-    }
-   }
+}
 ```
 Here, the button refers to the button in your app which you would want to lead to Chat Support.
 
