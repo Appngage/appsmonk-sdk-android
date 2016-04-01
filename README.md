@@ -1,24 +1,19 @@
 # Appsmonk
 
-Introduction: Appngage is a User Engagement and Growth Hack tool kit for Mobile Apps.
 
-Engage and Retain Multiple solutions to increase engagement of your app's users, along with A/B testing abilities.!
+##Android-Integration Steps:
 
-It helps app developers to engage users effectively without any coding.
-
-##Integration Steps:
-
-Appngage uses GCM (Google Cloud Messaging) for push messages so it is only compatible with Google Play.
+Appsmonk uses GCM (Google Cloud Messaging) for push messages so it is only compatible with Google Play.
 
 ###There are two steps to getting it up and running:
 
 1.	Set up your Google Developer project to get your Authorization key and GCM Sender Id.
 
-2.	Implement Appngage Push in your app.
+2.	Implement Appsmonk Push in your app. 
 
 ###Setting up Google Developer project
 
-The Appngage dashboard needs to have your authorization key to be able to push to users of your application and you'll need your GCM Sender ID to place within your app code.
+The Appsmonk dashboard needs to have your authorization key to be able to push to users of your application and you'll need your GCM Sender ID to place within your app code.
 
 ###STEP 1 : Creating a new Google API Project
 
@@ -55,7 +50,7 @@ Go to your newly created project and get your Project Number at the top of the p
    ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step7.png?raw=true "Optional Title")
    
 
-That's it; you should now see your Authorization key that you need to provide to Appngage:
+That's it; you should now see your Authorization key that you need to provide to Appsmonk:
 
 ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step8.png?raw=true "Optional Title")
 
@@ -67,21 +62,21 @@ At this point you should have:
 Your GCM Sender ID (e.g. 458299266933)
 Your Google Authorization Key (e.g. AIzaSyBVu_T1V6q1l3JAXqx3fmCgwPslRHThx3g)
 You will need to input the GCM Sender ID below in the config file of Appngege. The Google authorization key is not used in code, 
-but needs to be placed within your app's settings page on the Appngage dashboard.
+but needs to be placed within your app's settings page on the Appsmonk dashboard.
 
 ###Here are the steps to create an app in our dashboard.
 
-1) Go to Link: [https://appngage.com](https://appngage.com) and request access.
+1) Go to Link: [https://appsmonk.com](https://appsmonk.com) and request access.
 
-2) We will send an email with the registration link to appngage dashboard
+2) We will send an email with the registration link to Appsmonk dashboard
 
 3) Follow the link and Register.
 
 4) Click on 'Add an app' button to add the app and enter your GCM Server API Key and click on 'save'.
 
-You will get the Appngage API key once you save the App and you can see the same under 'settings tab'.
+You will get the Appsmonk API key once you save the App and you can see the same under 'settings tab'.
 
-###Initializing Appngage SDK With Android Studio
+###Initializing Appsmonk SDK With Android Studio
 
 Here are the steps:
 <pre>
@@ -130,11 +125,11 @@ Make sure you are connected to network during the integration.
    
 3) Add the following lines in res/values/stings.xml file
 ```xml
-    <string name="appngage_id">YOUR_APPNGAGE_API_KEY</string>
+    <string name="appngage_id">YOUR_APPSMONK_API_KEY</string>
     <string name="gcm_sender_id">YOUR_GCM_SENDER_ID</string>
  ```
  <pre>
- Be sure to replace <b>YOUR_APPNGAGE_APT_KEY</b> with your actual <b>APPNGAGE API KEY</b> from Appngage Dashboard.
+ Be sure to replace <b>YOUR_APPSMONK_API_KEY</b> with your actual <b>APPSMONK API KEY</b> from Appsmonk Dashboard.
  Also replace <b>YOUR_GCM_SENDER_ID</b> with your actual <b>GCM SENDER ID</b> that you obtained earlier.</pre>
  
 4)Configure Push and In App Chat
@@ -147,11 +142,9 @@ Below shown is a sample code of the Launching Activity file.
    import com.appngage.api.NgageManager;
    import com.appngage.gcm.dto.GCMItem;
    
-   
 public class MainActivity extends Activity {
 
     private NgageManager mAppngage;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,23 +152,18 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         initAppNgage();
         findViewById(R.id.clickText).setOnClickListener(new OnClickListener() {
-
+        
             @Override
             public void onClick(View v) {
                 startChat();
-
             }
         });
-
     }
-
-
+    
     private void startChat() {
-        mAppngage.setUserId(this,"adi"); // user id used by admin in web
-                                            // dashboard
+        mAppngage.setUserId(this,"adi"); // user id used by admin in web dashboard
         try {
-            // set color of Chat window header to match your toolbar/actionbar
-            // color
+            // set color of Chat window header to match your toolbar/actionbar color
             mAppngage.setHeaderColor(this,Color.parseColor("#666666"));
         } catch (Exception e) {
             Toast.makeText(this, "Invalid color code", Toast.LENGTH_SHORT)
@@ -221,6 +209,68 @@ try {
 }
 
 ```
+###For Cordova
+1) Import the appsmonk.jar file to your project.
+
+2) Build Project.
+
+Below shown is a sample code of the Launching DroidGap Activity file.
+```java
+   import org.apache.cordova.DroidGap;
+   import com.appngage.api.NgageManager;
+   public class MainActivity extends DroidGap {
+
+    private NgageManager mAppngage;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        super.loadUrl("file:///android_asset/www/index.html");
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initAppNgage();
+         Toast.makeText(this, "Your Chat starts in 5 seconds",
+         Toast.LENGTH_LONG)
+         .show();
+         new Handler().postDelayed(new Runnable() {
+
+         @Override
+         public void run() {
+        startChat();
+
+            }
+        }, 5000);
+
+    }
+
+    private void startChat() {
+        mAppngage.setUserId("adi"); // user id used by admin in web dashboard
+        try {
+            // set color of Chat window header to match your toolbar/actionbar color
+            mAppngage.setHeaderColor(Color.parseColor("#666666"));
+        } catch (Exception e) {
+            Toast.makeText(this, "Invalid color code", Toast.LENGTH_SHORT)
+                    .show();
+        }
+
+        mAppngage.startChat();
+
+    }
+
+    private void initAppNgage() {
+        // init Appnagage SDK
+        mAppngage = NgageManager.getInstance(this);
+        mAppngage.initManager(this);
+
+    }
+}
+   
+```
+
 Alright!
 
 We're set to take Off.
