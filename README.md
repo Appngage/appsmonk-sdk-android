@@ -212,7 +212,11 @@ try {
 ###For Cordova
 1) Import the appsmonk.jar file to your project.
 
-2) Build Project.
+2) Build project.
+
+3) Initialize NgageManager.
+
+4) Configure/Customize In App Chat.
 
 Below shown is a sample code of the Launching DroidGap Activity file.
 ```java
