@@ -209,8 +209,8 @@ try {
 }
 
 ```
-###For Cordova
-1) Import the [Appsmonk.jar](https://github.com/Appngage/appsmonk-sdk-android/blob/master/Appsmonk_SDK.zip?raw=true) file to your project.
+###For Cordova/Eclipse
+1) Import the [Appsmonk Library](https://github.com/Appngage/appsmonk-sdk-android/blob/master/Appsmonk_SDK.zip?raw=true) to your project.
 
 2) Build project.
 
@@ -218,7 +218,7 @@ try {
 
 4) Configure/Customize In App Chat.
 
-Below shown is a sample code of the Launching DroidGap Activity file.
+Below shown is a sample code of the Launching DroidGap(Cordova) Activity file.
 ```java
    import org.apache.cordova.DroidGap;
    import com.appngage.api.NgageManager;
