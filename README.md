@@ -210,7 +210,7 @@ try {
 
 ```
 ###For Cordova
-1) Import the appsmonk.jar file to your project.
+1) Import the [Appsmonk.jar](https://github.com/Appngage/appsmonk-sdk-android/blob/master/Appsmonk_SDK.zip?raw=true) file to your project.
 
 2) Build project.
 
