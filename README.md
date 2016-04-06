@@ -161,15 +161,17 @@ public class MainActivity  Activity implements View.OnClickListener {
         //init Appnagage SDK
         mAppngage = NgageManager.getInstance(this);
         try {
-            mAppngage.setUserId(this,"User Id").setUserFirstName("John")
-                     .setUserSecondName("doe")
-                    .setUserGender(NgageManager.GENDER_MALE)
-                    .setUserPhoneNumber("123456987")
-                    .setUserBio("John doe is real!! he got a band with the seal!!")
-                    .setUserImageUrl("http://static.zerochan.net/John.Doe.full.738659.jpg")
-                    .setUserDob("31/2/1759")
-                    .setUserEmailId("jhondoe@something.com")
-                    .initManager(this);
+            mAppngage
+                     .setUserId(this,"User Id")// If you would like to pass your App's user ID as a unique identifier. If not called, a screen will be prompted asking User's name.
+                     .setUserFirstName("John")//Optional
+                     .setUserSecondName("doe")//Optional
+                     .setUserGender(NgageManager.GENDER_MALE)//Optional
+                     .setUserPhoneNumber("123456987")//Optional
+                     .setUserBio("John doe is real!! he got a band with the seal!!")//Optional
+                     .setUserImageUrl("http://static.zerochan.net/John.Doe.full.738659.jpg")//Optional
+                     .setUserDob("31/2/1759")//Optional
+                     .setUserEmailId("jhondoe@something.com")//Optional
+                     .initManager(this);
         } catch (AppngageException e) {
             e.printStackTrace();
         }
@@ -255,11 +257,10 @@ attributes.put("Marital Status", "Single");
 try {
    mAppngage.setCustomAttributes(this,attributes); //Optional. Set any custom properties/attribute specific to your app.
    mAppngage.sendCustomEvent("Browsed Samsung Galaxy SM-G920IZDAINS Phone");
-   mAppngage.setUserId("ANY_STRING_OR_USERID"); // If you would like to pass your App's user ID as a unique identifier. If not called, a screen will be prompted asking User's name.
    mAppngage.setHeaderColor(Color.parseColor("#COLOR_CODE")); //Theme color according to your app.
    mAppngage.setDarkTitle(Boolean isDark);// If theme color is on the lighter side.
    mAppngage.setVibration(this,true); //Optional. Set if you need the notification vibration.
-   mAppngage.setNotificationTone(this,"Path to .mp3 file"); //Optional. Set if you need the notification tone.
+   mAppngage.setNotificationTone(this,"Path to .mp3 file"); //Optional. Set if you need the notification tone, if not default tone will be used.
 } catch (AppngageException e) {
    e.printStackTrace();
 }
@@ -308,7 +309,17 @@ Below shown is a sample code of the Launching DroidGap(Cordova) Activity file.
     }
 
     private void startChat() {
-        mAppngage.setUserId("john doe"); // user id used by admin in web dashboard
+        mAppngage
+                     .setUserId("john doe")// If you would like to pass your App's user ID as a unique identifier. If not called, a screen will be prompted asking User's name.
+                     .setUserFirstName("John")//Optional
+                     .setUserSecondName("doe")//Optional
+                     .setUserGender(NgageManager.GENDER_MALE)//Optional
+                     .setUserPhoneNumber("123456987")//Optional
+                     .setUserBio("John doe is real!! he got a band with the seal!!")//Optional
+                     .setUserImageUrl("http://static.zerochan.net/John.Doe.full.738659.jpg")//Optional
+                     .setUserDob("31/2/1759")//Optional
+                     .setUserEmailId("jhondoe@something.com");//Optional
+                     
         try {
             // set color of Chat window header to match your toolbar/actionbar color
             mAppngage.setHeaderColor(Color.parseColor("#666666"));
