@@ -142,51 +142,107 @@ Below shown is a sample code of the Launching Activity file.
    import com.appngage.api.NgageManager;
    import com.appngage.gcm.dto.GCMItem;
    
-public class MainActivity extends Activity {
-
+public class MainActivity  Activity implements View.OnClickListener {
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private EditText mEtUserID;
+    private EditText mEtColorCOde;
     private NgageManager mAppngage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initAppNgage();
-        findViewById(R.id.clickText).setOnClickListener(new OnClickListener() {
-        
-            @Override
-            public void onClick(View v) {
-                startChat();
-            }
-        });
-    }
-    
-    private void startChat() {
-        mAppngage.setUserId(this,"adi"); // user id used by admin in web dashboard
+
+        Button button = (Button) findViewById(R.id.in_app_message);
+        button.setOnClickListener(this);
+        mEtUserID = (EditText) findViewById(R.id.user_id);
+        mEtColorCOde = (EditText) findViewById(R.id.color_code);
+
+        //init Appnagage SDK
+        mAppngage = NgageManager.getInstance(this);
         try {
-            // set color of Chat window header to match your toolbar/actionbar color
-            mAppngage.setHeaderColor(this,Color.parseColor("#666666"));
-        } catch (Exception e) {
-            Toast.makeText(this, "Invalid color code", Toast.LENGTH_SHORT)
-                    .show();
+            mAppngage.setUserId(this,"User Id").setUserFirstName("John")
+                     .setUserSecondName("doe")
+                    .setUserGender(NgageManager.GENDER_MALE)
+                    .setUserPhoneNumber("123456987")
+                    .setUserBio("John doe is real!! he got a band with the seal!!")
+                    .setUserImageUrl("http://static.zerochan.net/John.Doe.full.738659.jpg")
+                    .setUserDob("31/2/1759")
+                    .setUserEmailId("jhondoe@something.com")
+                    .initManager(this);
+        } catch (AppngageException e) {
+            e.printStackTrace();
+        }
+        onHandleIntent(getIntent());
+
+    }
+
+
+    private void onHandleIntent(Intent intent) {
+        if (mAppngage.isFromAppNgage(intent)) {
+            GCMItem gcmItem = mAppngage.getGCMItem(intent);
+
+            switch (gcmItem.type) {
+                case Constants.GCMType.TEXT:
+                    Toast.makeText(this, "Received text message with headlie" + gcmItem.heading, Toast.LENGTH_LONG).show();
+                    break;
+                case Constants.GCMType.IMAGE:
+                    Toast.makeText(this, "Received image message with headlie" + gcmItem.heading, Toast.LENGTH_LONG).show();
+                    break;
+                case Constants.GCMType.VIDEO:
+                    Toast.makeText(this, "Received video message with headlie" + gcmItem.heading, Toast.LENGTH_LONG).show();
+                    break;
+            }
+
+        }
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        mAppngage.setCustomAttributes(this,new HashMap<String, String>());
+        try {
+            mAppngage.setVibration(this,true);
+            mAppngage.setNotificationTone(this,"android.resource://"+getPackageName()+R.raw.ding);
+        } catch (AppngageException e) {
+            e.printStackTrace();
+        }
+        if (!TextUtils.isEmpty(mEtColorCOde.getText())) {
+            try {
+                mAppngage.setHeaderColor(this,Color.parseColor(mEtColorCOde.getText().toString()));
+
+            } catch (Exception e) {
+                Toast.makeText(this, "Invalid color code", Toast.LENGTH_SHORT).show();
+            }
         }
 
         mAppngage.startChat(this);
-
     }
 
-    private void initAppNgage() {
-        // init Appnagage SDK
-        mAppngage = NgageManager.getInstance(this);
-        try {
-            mAppngage.initManager(this);
-        } catch (AppngageException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        onHandleIntent(intent);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAppngage.clear();
+    }
 }
+
 ```
 Here, the button refers to the button in your app which you would want to lead to Chat Support.
 
@@ -252,7 +308,7 @@ Below shown is a sample code of the Launching DroidGap(Cordova) Activity file.
     }
 
     private void startChat() {
-        mAppngage.setUserId("adi"); // user id used by admin in web dashboard
+        mAppngage.setUserId("john doe"); // user id used by admin in web dashboard
         try {
             // set color of Chat window header to match your toolbar/actionbar color
             mAppngage.setHeaderColor(Color.parseColor("#666666"));
