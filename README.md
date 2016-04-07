@@ -182,21 +182,11 @@ public class MainActivity  Activity implements View.OnClickListener {
 
 
     private void onHandleIntent(Intent intent) {
-        if (mAppngage.isFromAppNgage(intent)) {
-            GCMItem gcmItem = mAppngage.getGCMItem(intent);
-
-            switch (gcmItem.type) {
-                case Constants.GCMType.TEXT:
-                    Toast.makeText(this, "Received text message with headlie" + gcmItem.heading, Toast.LENGTH_LONG).show();
-                    break;
-                case Constants.GCMType.IMAGE:
-                    Toast.makeText(this, "Received image message with headlie" + gcmItem.heading, Toast.LENGTH_LONG).show();
-                    break;
-                case Constants.GCMType.VIDEO:
-                    Toast.makeText(this, "Received video message with headlie" + gcmItem.heading, Toast.LENGTH_LONG).show();
-                    break;
-            }
-
+      if (mAppngage.isFromAppNgage(intent)) { \\ checking to see if the notification is from Appsmonk
+       GCMItem gcmItem = mAppngage.getGCMItem(intent);
+         }
+      else  {
+           // Handle any other push notifications here
         }
     }
 
