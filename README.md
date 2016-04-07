@@ -24,7 +24,7 @@ Create a new project
 ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step1.png?raw=true "Optional Title")
 
 ##STEP 2 : Getting your GCM Sender ID
-Your project number is your GCM ID, you can see it in Google Cloud Platform option in products & services menu.
+Your project number is your GCM Sender ID, you can see it in Google Cloud Platform option in products & services menu.
 
 ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step2.png?raw=true "Optional Title")
 
