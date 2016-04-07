@@ -5,17 +5,17 @@
 
 Appsmonk uses GCM (Google Cloud Messaging) for push messages so it is only compatible with Google Play.
 
-###There are two steps to getting it up and running:
+##There are two steps to getting it up and running:
 
 1.	Set up your Google Developer project to get your Authorization key and GCM Sender Id.
 
 2.	Implement Appsmonk Push in your app. 
 
-###Setting up Google Developer project
+##Setting up Google Developer project
 
 The Appsmonk dashboard needs to have your authorization key to be able to push to users of your application and you'll need your GCM Sender ID to place within your app code.
 
-###STEP 1 : Creating a new Google API Project
+##STEP 1 : Creating a new Google API Project
 
 Go to the Google Developers Console: https://console.developers.google.com/project
 
@@ -23,11 +23,11 @@ Create a new project
 
 ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step1.png?raw=true "Optional Title")
 
-###STEP 2 : Getting your GCM Sender ID
+##STEP 2 : Getting your GCM Sender ID
 
 ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step2.png?raw=true "Optional Title")
 
-###STEP 3 : Activating GCM API
+##STEP 3 : Activating GCM API
 
 Go to the API & Auth menu and select APIs. Then look for the Google Cloud Messaging for Android line and click on the OFF button to activate it:
 
@@ -37,7 +37,7 @@ Go to the API & Auth menu and select APIs. Then look for the Google Cloud Messag
 
 Go to your newly created project and get your Project Number at the top of the page
 
-###STEP 4 : Getting your Authorization key
+##STEP 4 : Getting your Authorization key
 
    1 . Go to Credentials and click Create new Key:
 
@@ -55,7 +55,7 @@ That's it; you should now see your Authorization key that you need to provide to
 ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step8.png?raw=true "Optional Title")
 
 
-###Setting up your application
+##Setting up your application
 
 At this point you should have:
 
@@ -64,7 +64,7 @@ Your Google Authorization Key (e.g. AIzaSyBVu_T1V6q1l3JAXqx3fmCgwPslRHThx3g)
 You will need to input the GCM Sender ID below in the config file of Appngege. The Google authorization key is not used in code, 
 but needs to be placed within your app's settings page on the Appsmonk dashboard.
 
-###Here are the steps to create an app in our dashboard.
+##Here are the steps to create an app in our dashboard.
 
 1) Go to Link: [https://appsmonk.com](https://appsmonk.com) and request access.
 
@@ -76,7 +76,7 @@ but needs to be placed within your app's settings page on the Appsmonk dashboard
 
 You will get the Appsmonk API key once you save the App and you can see the same under 'settings tab'.
 
-###Initializing Appsmonk SDK With Android Studio
+##Initializing Appsmonk SDK With Android Studio
 
 Here are the steps:
 <pre>
@@ -266,7 +266,7 @@ try {
 }
 
 ```
-###For Cordova/Eclipse
+##For Cordova/Eclipse
 1) Import the [Appsmonk Library](https://github.com/Appngage/appsmonk-sdk-android/blob/master/Appsmonk_SDK.zip?raw=true) to your project.
 
 2) Build project.
