@@ -53,7 +53,7 @@ Go to the API & Auth menu and select APIs. Then look for the Google Cloud Messag
 
 That's it; you should now see your Authorization key that you need to provide to Appsmonk:
 
-![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step8.pngG?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step8.png?raw=true "Optional Title")
 
 
 ##Setting up your application
