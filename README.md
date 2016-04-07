@@ -182,7 +182,7 @@ public class MainActivity  Activity implements View.OnClickListener {
 
 
     private void onHandleIntent(Intent intent) {
-      if (mAppngage.isFromAppNgage(intent)) { \\ checking to see if the notification is from Appsmonk
+      if (mAppngage.isFromAppNgage(intent)) { // checking to see if the notification is from Appsmonk
        GCMItem gcmItem = mAppngage.getGCMItem(intent);
          }
       else  {
