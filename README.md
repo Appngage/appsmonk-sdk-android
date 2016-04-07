@@ -182,34 +182,16 @@ public class MainActivity  Activity implements View.OnClickListener {
 
 
     private void onHandleIntent(Intent intent) {
-      if (mAppngage.isFromAppNgage(intent)) { // checking to see if the notification is from Appsmonk
+      if (mAppngage.isFromAppNgage(intent)) { 
        GCMItem gcmItem = mAppngage.getGCMItem(intent);
          }
-      else  {
-           // Handle any other push notifications here
-        }
+      
     }
 
 
     @Override
     public void onClick(View v) {
-
-        mAppngage.setCustomAttributes(this,new HashMap<String, String>());
-        try {
-            mAppngage.setVibration(this,true);
-            mAppngage.setNotificationTone(this,"android.resource://"+getPackageName()+R.raw.ding);
-        } catch (AppngageException e) {
-            e.printStackTrace();
-        }
-        if (!TextUtils.isEmpty(mEtColorCOde.getText())) {
-            try {
-                mAppngage.setHeaderColor(this,Color.parseColor(mEtColorCOde.getText().toString()));
-
-            } catch (Exception e) {
-                Toast.makeText(this, "Invalid color code", Toast.LENGTH_SHORT).show();
-            }
-        }
-
+    
         mAppngage.startChat(this);
     }
 
@@ -239,15 +221,42 @@ public class MainActivity  Activity implements View.OnClickListener {
 ```
 Here, the button refers to the button in your app which you would want to lead to Chat Support.
 
-5)  For further customization, call any of these methods in the onCreate() method of your launch activity.
+In your BroadcastReceiver to handle other WakefulBroadcasts you can specify like this: 
+```java
+public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+      if (!NgageGCMHelper.isFromAppngageGCM(intent)) {
+           //Other push notification handling can be done here.
+       }
+    }
+}
+```
+5)  To add custom attributes, call setCustomAttributes method of NgageManager object in the onCreate() method of your launch activity.
 ```java
 HashMap<String, String> attributes = new HashMap<String, String>();
 attributes.put("Category", "Sports");
 attributes.put("Rated", "5 Stars");
 attributes.put("Marital Status", "Single");
+try{
+    mAppngage.setCustomAttributes(this,attributes); 
+   }
+   catch (AppngageException e) {
+   e.printStackTrace();
+}
+```
+6) To Send Custom Events, call sendCustomEvent of NgageManager object, following code shows the same.
+```java
 try {
-   mAppngage.setCustomAttributes(this,attributes); //Optional. Set any custom properties/attribute specific to your app.
-   mAppngage.sendCustomEvent("Browsed Samsung Galaxy SM-G920IZDAINS Phone");
+  mAppngage.sendCustomEvent("Browsed Samsung Galaxy SM-G920IZDAINS Phone");
+  }catch (AppngageException e) {
+   e.printStackTrace();
+}
+
+```
+7) To Customize Chat interface and setting notification tone, call following methods from Oncreate of your launching activity.
+```java
+try{
    mAppngage.setHeaderColor(Color.parseColor("#COLOR_CODE")); //Theme color according to your app.
    mAppngage.setDarkTitle(Boolean isDark);// If theme color is on the lighter side.
    mAppngage.setVibration(this,true); //Optional. Set if you need the notification vibration.
