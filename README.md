@@ -227,7 +227,7 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
       if (!NgageGCMHelper.isFromAppngageGCM(intent)) {
-           //Other push notification handling can be done here.
+           //Handle your other notifications here.
        }
     }
 }
