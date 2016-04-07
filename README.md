@@ -21,19 +21,19 @@ Go to the Google Developers Console: https://console.developers.google.com/proje
 
 Create a new project
 
-![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step1.png?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step1.PNG?raw=true "Optional Title")
 
 ##STEP 2 : Getting your GCM Sender ID
 
-![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step2.png?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step2.PNG?raw=true "Optional Title")
 
 ##STEP 3 : Activating GCM API
 
 Go to the API & Auth menu and select APIs. Then look for the Google Cloud Messaging for Android line and click on the OFF button to activate it:
 
-![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step3.png?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step3.PNG?raw=true "Optional Title")
 
-![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step4.png?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step4.PNG?raw=true "Optional Title")
 
 Go to your newly created project and get your Project Number at the top of the page
 
@@ -41,18 +41,18 @@ Go to your newly created project and get your Project Number at the top of the p
 
    1 . Go to Credentials and click Create new Key:
 
-   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step5.png?raw=true "Optional Title")
+   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step5.PNG?raw=true "Optional Title")
    
-   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step6.png?raw=true "Optional Title")
+   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step6.PNG?raw=true "Optional Title")
 
    2 .Select Server key, and click Create:
 
-   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step7.png?raw=true "Optional Title")
+   ![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step7.PNG?raw=true "Optional Title")
    
 
 That's it; you should now see your Authorization key that you need to provide to Appsmonk:
 
-![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step8.png?raw=true "Optional Title")
+![Alt text](https://github.com/Appngage/appngage-sdk-integration/blob/master/image/step8.PNG?raw=true "Optional Title")
 
 
 ##Setting up your application
