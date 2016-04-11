@@ -204,11 +204,13 @@ public class MainActivity  Activity implements View.OnClickListener {
     @Override
     protected void onStart() {
         super.onStart();
+        mAppngage.onOpenApplication();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        mAppngage.onCloseApplication();
     }
 
     @Override
