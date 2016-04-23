@@ -324,6 +324,7 @@ Below shown is a sample code of the Launching DroidGap(Cordova) Activity file.
                      
         try {
             // set color of Chat window header to match your toolbar/actionbar color
+            //Same color will be applied to the loader too.
             mAppngage.setHeaderColor(Color.parseColor("#666666"));
         } catch (Exception e) {
             Toast.makeText(this, "Invalid color code", Toast.LENGTH_SHORT)
