@@ -263,9 +263,9 @@ try{
    mAppngage.setDarkTitle(this,Boolean isDark);// If theme color is on the lighter side.
    mAppngage.setVibration(this,true); //Optional. Set if you need the notification vibration.
    mAppngage.setNotificationTone(this,"Path to .mp3 file"); //Optional. Set if you need the notification tone, if not default tone will be used.
-   mAppngage.setLoadingDrawable(Context context, drawable);//Optional set loading drawble instead of progressbar, you can replace drawble with file Uri(.gif is supported) 
-   mAppngage.setLoadingImageHeight(Context context, height); // set height as integer value
-   mAppngage.setLoadingImageWidth(Context context, width);  // set width as integer   value
+   mAppngage.setLoadingDrawable(Context context, drawable);//Optional.to set drawble instead of progressbar, you can replace drawble with file Uri(.gif is supported). 
+   mAppngage.setLoadingImageHeight(Context context, height); // set height as integer value.
+   mAppngage.setLoadingImageWidth(Context context, width);  // set width as integer   value.
    
 } catch (AppngageException e) {
    e.printStackTrace();
